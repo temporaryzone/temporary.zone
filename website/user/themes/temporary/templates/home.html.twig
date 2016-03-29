@@ -1,0 +1,94 @@
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+<!DOCTYPE html>
+<html lang="{{ grav.language.getActive ?: theme_config.default_lang }}">
+<head>
+
+{% block head %}
+    <meta charset="utf-8" />
+    <title>{% if header.title %}{{ header.title|e('html') }} | {% endif %}{{ site.title|e('html') }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/png" href="{{ url('theme://images/favicon.png', true) }}" />
+    <link rel="canonical" href="{{ page.url(true, true) }}" />
+
+    {% block stylesheets %}
+        {% do assets.addCss('theme://css/style.css') %}
+    {% endblock %}
+    {{ assets.css() }}
+
+    {% block javascripts %}
+        {% do assets.addJs('jquery',101) %}
+        {% do assets.addJs('theme://js/modernizr.custom.71422.js',100) %}
+    {% endblock %}
+    {{ assets.js() }}
+
+{% endblock head%}
+</head>
+<body id="top" class="">
+		<div id="bg"></div>
+		<div id="sign"><img src="{{ url('theme://assets/zona_sign.svg') }}" alt=""></div>
+        <section id="plane1" class="plane">
+{#         	<h1 id="temporary_logo" class="logo"><span>T</span><span>E</span><span>M</span><span>P</span><span>O</span><span>R</span><span>A</span><span>R</span><span>Y</span></h1>
+        	<h1 id="zone_logo" class="logo"><span>Z</span><span>O</span><span>N</span><span>E</span></h1> #}
+          <div id="main_description">{{ page.header.main_text|markdown }}</div>
+        </section>
+         <section id="plane2" class="plane">
+<div class="details">
+	<div class="col">
+	<h2>{{ header.themes_nadpis }}</h2>
+	{{ header.themes|markdown }}
+	</div>
+	         	<div class="col">
+	<h2>{{ header.help_nadpis }}</h2>
+	{{ header.help|markdown }}
+	</div>
+</div>
+        </section>
+        <script type="text/javascript" src="{{ url('theme://js/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url('theme://js/pixi.min.js') }}"></script>
+
+        <script>
+var renderer = PIXI.autoDetectRenderer(jQuery(window).innerWidth(), jQuery(window).innerHeight());
+
+document.getElementById("bg").appendChild(renderer.view);
+
+// create the root of the scene graph
+var stage = new PIXI.Container();
+
+var bg = PIXI.Sprite.fromImage("{{ url('theme://assets/header_7.png') }}");
+bg.width = renderer.width;
+bg.height = renderer.height;
+stage.addChild(bg);
+
+
+var blurFilter1 = new PIXI.filters.BlurFilter();
+
+
+	var displacementTexture = PIXI.Sprite.fromImage("{{ url('theme://assets/map.jpg') }}");
+	 var displacementFilter = new PIXI.filters.DisplacementFilter(displacementTexture);
+	// displacementFilter.scale.x = 50;
+	// displacementFilter.scale.y = 50;
+
+bg.filters = [displacementFilter];
+var count = 0;
+
+requestAnimationFrame(animate);
+
+function animate() {
+
+     count += 0.005;
+
+     var blurAmount = Math.cos(count) ;
+     var blurAmount2 = Math.sin(count) ;
+
+	displacementFilter.scale.x = 30 * blurAmount;
+	displacementFilter.scale.y = 30 * blurAmount2;
+
+    // blurFilter1.blur = 20 * (blurAmount);
+    renderer.render(stage);
+    requestAnimationFrame( animate );
+}
+
+
+        </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+.DS_Store
+node_modules
+npm-debug.log
+.sass-cache
+kirby/thumbs
+kriby/thumbs/*
+site/thumbs
+site/thumbs/*
+devstuff

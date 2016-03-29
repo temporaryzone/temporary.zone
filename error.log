@@ -1,0 +1,1 @@
+24/Mar/2016:16:34:29 +0100 [ERROR 500 /] PHP message: PHP Notice:  Undefined index: HTTP_ACCEPT in /Users/krisa/dev/tmp/website/system/src/Grav/Common/Errors/Errors.php on line 17

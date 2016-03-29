@@ -1,0 +1,17 @@
+@import 'marx.css';
+
+@font-face {
+  font-family: office;
+  src: local("Helvetica Neue Bold"),
+       local("HelveticaNeue-Bold"),
+       url(MgOpenModernaBold.ttf);
+  font-weight: bold;
+}
+ 
+
+body {
+	font-family: "Office Code Pro";
+
+	font-size: 150%; 
+ 
+}
