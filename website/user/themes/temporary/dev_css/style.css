@@ -10,25 +10,107 @@ $blue: #5050FF;
     font-weight: bold;
 }
 
+
+@font-face {
+    font-family: 'oswald';
+    src: url('oswald-regular-webfont.eot');
+    src: url('oswald-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('oswald-regular-webfont.woff2') format('woff2'),
+         url('oswald-regular-webfont.woff') format('woff'),
+         url('oswald-regular-webfont.ttf') format('truetype'),
+         url('oswald-regular-webfont.svg#oswald_regularregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+.button {
+	display: inline-block;
+    background-color: transparent;
+    border: .2rem solid #444;
+    border-radius: 0;
+    color: #444;
+    cursor: pointer;
+    margin-bottom: .8rem;
+    margin-top: 3rem;
+    margin-right: .4rem;
+    padding: .8rem 1.6rem;
+    text-align: center;
+    text-transform: uppercase;
+    transition: .25s ease;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    vertical-align: baseline;
+    text-decoration: none;
+    transition: .25s ease;
+
+}
+.button:hover {
+	    background: #444;
+    border-color: #444;
+    color: #fff;
+}
+
+@font-face {
+    font-family: 'office';
+    src: url('officecodepro-regular-webfont.eot');
+    src: url('officecodepro-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('officecodepro-regular-webfont.woff2') format('woff2'),
+         url('officecodepro-regular-webfont.woff') format('woff'),
+         url('officecodepro-regular-webfont.ttf') format('truetype'),
+         url('officecodepro-regular-webfont.svg#office_code_proregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 html {
     height: 100%;
 }
-
+a
 body {
-    font-family: "Oswald Regular";
+    font-family: "office";
     font-size: 150%;
     min-height: 100%;
 }
 
 .plane {
     height: 100vh;
-    min-height: 100%;
-    width: 100%;
-    min-width: 100%;
+
 }
 
-#plane1 {}
+#plane1 {
+	position: fixed;
+	top: 0;
+	background: #E3E3E3;
+	width: 50%;
+	height: 100%;
+	right: 0;
+	top: 0;
+	lost-utility: clearfix;
+}
 
+#main_description {
+	    font-family: "office";
+	width: 40%;
+	margin: 3% 5%;
+	font-size: 1.1em;
+	letter-spacing: -0.03em;
+	position: fixed;
+	/*color: white;*/
+	color: rgba(0, 0, 0, 1);
+	/*color: rgba(255,255,255, 0.9);*/
+	/*text-shadow: 30px 30px 10px rgba(0,0,0, 0.5);*/
+	text-align: left; 
+
+}
+#main_description p { 
+margin: 0;
+
+  }
 
 h1 {
 	    font-family: "League Gothic";
@@ -68,16 +150,35 @@ h1 {
 }*/
 
 
-#main_description {
-	width: 90%;
-	margin: 3% 5%;
-	font-size: 4vw;
-	color: black;
-	color: rgba(0,0,0, 1);
-	/*color: rgba(255,255,255, 0.9);*/
-	/*text-shadow: 0 0 10px black;*/
-	text-align: left; 
+/*.col {
+ 	margin: 0;
+ 	width: 50%;
+	font-size: 2vw;
+	float:left;
+	padding: 0 3vw;
+}*/
+
+
+/*font-family: "Office Code Pro";*/
+
+/*.col.popisky {
+
+	font-family: "office";
+	font-size: 1vw;
+
 }
+
+.col.popisky h2 { 
+	font-size: 2vw;
+	font-family: "oswald";
+}
+*/
+/*.col:nth-child(2) {
+
+}*/
+
+ul {list-style-type: square;}
+
 
 .nobreak {
 	white-space: nowrap;
@@ -87,7 +188,6 @@ h1 {
 	position: absolute;
 	height: 100%;
 	width: 100%;
-	z-index: -1;
 }
 #plane2 {
     background: $blue;
@@ -96,7 +196,7 @@ h1 {
    /* padding-top: 50px;*/
 }
 .details {
-	    width: 70%;
+	    width: 90%;
 	    lost-utility: clearfix;
 	    margin: 5% 5%;
 }
@@ -106,9 +206,9 @@ h1 {
 
 #sign {
 	position: fixed;
-	right: 50px;
-	bottom: 50px;
-	width: 50px;
+	right: 30px;
+	bottom: 30px;
+	width: 40px;
 }
 
 #sign img {
@@ -118,10 +218,40 @@ h1 {
 }
 
 .details {
-	font-family: "Office Code Pro";
+	font-family: "office";
 }
 
 .details h2 {
-    font-family: "Oswald Regular";
+    font-family: "oswald";
+}
+
+/*.contact {
+	lost-column: 1/2;
+}*/
+canvas {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#bgplane {
+	padding: 45% 5% 5% 5%;
+	width: 50%;
+}
+#bgplane img {
+	max-width: 90%;
+	margin: 1%;
+
+	/*filter: blur(20px);*/
+}
+
+
+
+
+.gradient {
+	/*background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(237,237,237,0) 40%);*/
+	position:fixed;
+	width: 100%;
+	height: 100%;
+
 }
 

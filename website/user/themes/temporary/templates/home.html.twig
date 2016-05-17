@@ -24,14 +24,31 @@
 {% endblock head%}
 </head>
 <body id="top" class="">
-		<div id="bg"></div>
+		{# <div id="bg"></div> #}
+{# 		<div class="gradient"></div> #}
 		<div id="sign"><img src="{{ url('theme://assets/zona_sign.svg') }}" alt=""></div>
+       <div id="bgplane"> {% for media in page.media.images %}
+        {{ media.cropResize(1600, 1200).quality(90).edge.grayscale.negate.brightness(+50).contrast(-70).html() }}
+
+    {% endfor %} </div>
+
         <section id="plane1" class="plane">
-{#         	<h1 id="temporary_logo" class="logo"><span>T</span><span>E</span><span>M</span><span>P</span><span>O</span><span>R</span><span>A</span><span>R</span><span>Y</span></h1>
-        	<h1 id="zone_logo" class="logo"><span>Z</span><span>O</span><span>N</span><span>E</span></h1> #}
-          <div id="main_description">{{ page.header.main_text|markdown }}</div>
+
+          <div id="main_description">
+      	{{ page.header.main_text|markdown }}
+{# 	<div class="col popisky">	
+		<h2>{{ header.themes_nadpis }}</h2>
+	{{ header.themes|markdown }}
+		<h2>{{ header.help_nadpis }}</h2>
+	{{ header.help|markdown }}
+</div> #}
+		<p>
+			Kontaktujte nás na <a class="contact button" href="mailto:mail@temporary.zone">mail@temporary.zone</a>
+		</p>
+          </div>
+          {# <INPUT type="text"  id="main_description" VALUE="{{ page.header.main_text }}"> #}
         </section>
-         <section id="plane2" class="plane">
+{#          <section id="plane2" class="plane">
 <div class="details">
 	<div class="col">
 	<h2>{{ header.themes_nadpis }}</h2>
@@ -41,54 +58,58 @@
 	<h2>{{ header.help_nadpis }}</h2>
 	{{ header.help|markdown }}
 	</div>
-</div>
+</div> #}
+{# <div class="contact">
+	<button>Kontaktujte nás!</button>
+</div> #}
         </section>
         <script type="text/javascript" src="{{ url('theme://js/jquery.min.js') }}"></script>
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
         <script type="text/javascript" src="{{ url('theme://js/pixi.min.js') }}"></script>
 
         <script>
-var renderer = PIXI.autoDetectRenderer(jQuery(window).innerWidth(), jQuery(window).innerHeight());
+// var renderer = PIXI.autoDetectRenderer(jQuery(window).innerWidth(), (jQuery(window).innerWidth()/ 1.875));
 
-document.getElementById("bg").appendChild(renderer.view);
+// document.getElementById("bg").appendChild(renderer.view);
 
-// create the root of the scene graph
-var stage = new PIXI.Container();
+// // create the root of the scene graph
+// var stage = new PIXI.Container();
 
-var bg = PIXI.Sprite.fromImage("{{ url('theme://assets/header_7.png') }}");
-bg.width = renderer.width;
-bg.height = renderer.height;
-stage.addChild(bg);
-
-
-var blurFilter1 = new PIXI.filters.BlurFilter();
+// var bg = PIXI.Sprite.fromImage("{{ url('theme://assets/header_7.png') }}");
+// bg.width = renderer.width;
+// bg.height = renderer.height;
+// stage.addChild(bg);
 
 
-	var displacementTexture = PIXI.Sprite.fromImage("{{ url('theme://assets/map.jpg') }}");
-	 var displacementFilter = new PIXI.filters.DisplacementFilter(displacementTexture);
-	// displacementFilter.scale.x = 50;
-	// displacementFilter.scale.y = 50;
-
-bg.filters = [displacementFilter];
-var count = 0;
-
-requestAnimationFrame(animate);
-
-function animate() {
-
-     count += 0.005;
-
-     var blurAmount = Math.cos(count) ;
-     var blurAmount2 = Math.sin(count) ;
-
-	displacementFilter.scale.x = 30 * blurAmount;
-	displacementFilter.scale.y = 30 * blurAmount2;
-
-    // blurFilter1.blur = 20 * (blurAmount);
-    renderer.render(stage);
-    requestAnimationFrame( animate );
-}
+// var blurFilter1 = new PIXI.filters.BlurFilter();
 
 
-        </script>
+// 	var displacementTexture = PIXI.Sprite.fromImage("{{ url('theme://assets/map.jpg') }}");
+// 	 var displacementFilter = new PIXI.filters.DisplacementFilter(displacementTexture);
+// 	// displacementFilter.scale.x = 50;
+// 	// displacementFilter.scale.y = 50;
+
+// bg.filters = [displacementFilter];
+// var count = 0;
+
+// requestAnimationFrame(animate);
+
+// function animate() {
+
+//      count += 0.005;
+
+//      var blurAmount = Math.cos(count) ;
+//      var blurAmount2 = Math.sin(count) ;
+
+// 	displacementFilter.scale.x = 30 * blurAmount;
+// 	displacementFilter.scale.y = 30 * blurAmount2;
+
+//     // blurFilter1.blur = 20 * (blurAmount);
+//     renderer.render(stage);
+//     requestAnimationFrame( animate );
+// }
+
+
+//         </script>
 </body>
 </html>
